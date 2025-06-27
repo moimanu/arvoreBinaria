@@ -38,6 +38,49 @@ public class Node {
         }
     }
 
+    //------------------EXERCÍCIO 2------------------//
+
+    //1 - Função não recursiva que retorna o menor valor de uma ABB
+    public int findSmaller(Node no) {
+
+        int smaller = no.value;
+
+        while (no.left != null) {
+            while (no.right != null) {
+                no.right = no.right.right;
+                if(no.left.value < smaller){
+                    smaller = no.left.value;
+                }
+            }
+            no.left = no.left.left;
+            if(no.left.value < smaller){
+                smaller = no.left.value;
+            }
+        }
+
+        return smaller;
+    }
+
+    //2 - Funções Pre e Pos Orders
+
+    public void printNodesPreOrder(Node no) {
+        if(no != null) {
+            System.out.print(no.value + " ");
+            printNodes(no.left);
+            printNodes(no.right);
+        }
+    }
+
+    public void printNodesPosOrder(Node no) {
+        if(no != null) {
+            System.out.print(no.value + " ");
+            printNodes(no.left);
+            printNodes(no.right);
+        }
+    }
+
+    //------------------EXERCÍCIO 1------------------//
+
     //1 - Função que conta o número de nós não folhas em uma ABB simples
     public int countInternNodes(Node no) {
         if (no == null) return 0;

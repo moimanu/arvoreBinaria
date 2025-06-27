@@ -1,7 +1,41 @@
 package arvoreBinaria;
 
 public class Main {
-    public static void main(String[] args) {
+
+    // Exercício de iteratividade
+    public static void testesIterativos() {
+
+        // Criando nova árvore
+        Node tree = new Node(33);
+
+        // Inserindo nós
+        tree.insertNode(15, tree);
+        tree.insertNode(41, tree);
+        tree.insertNode(38, tree);
+        tree.insertNode(34, tree);
+        tree.insertNode(47, tree);
+        tree.insertNode(43, tree);
+        tree.insertNode(49, tree);
+
+        // Encontrando o menor valor na árvore
+        System.out.println(tree.findSmaller(tree));
+
+        // Print In Order
+        System.out.print("InOrder: ");
+        tree.printNodes(tree);
+
+        // Print Pre Order
+        System.out.print("PreOrder: ");
+        tree.printNodesPreOrder(tree);
+
+        // Print Pos Order
+        System.out.print("PosOrder: ");
+        tree.printNodesPosOrder(tree);
+
+    }
+
+    //Exercício de recursividade
+    public static void testesRecursivos() {
 
         /* Árvore:
 
@@ -40,9 +74,14 @@ public class Main {
         //Encontrando o maior valor na árvore
         System.out.println("4) Maior valor: " + tree.findBigger(tree));
 
-        // Removendo nós pares e atualizar a raiz
+        //Removendo nós pares e atualizar a raiz
         tree = tree.removePairs(tree);
         System.out.print("5) Sem nós pares: ");
         tree.printNodes(tree);
+
+    }
+
+    public static void main(String[] args) {
+        testesIterativos();
     }
 }
