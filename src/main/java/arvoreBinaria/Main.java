@@ -1,9 +1,12 @@
 package arvoreBinaria;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
     // Exercício de iteratividade
-    public static void testesIterativos() {
+    public static void listaExercicioDois() {
 
         // Criando nova árvore
         Node tree = new Node(33);
@@ -17,25 +20,69 @@ public class Main {
         tree.insertNode(43, tree);
         tree.insertNode(49, tree);
 
+        System.out.println("Questão 1)");
+
         // Encontrando o menor valor na árvore
-        System.out.println(tree.findSmaller(tree));
+        System.out.println("Menor valor da árvore: " + tree.findSmaller(tree));
+
+        System.out.print("\nQuestão 2)");
 
         // Print In Order
-        System.out.print("InOrder: ");
+        System.out.print("\nInOrder: ");
         tree.printNodes(tree);
 
         // Print Pre Order
-        System.out.print("PreOrder: ");
+        System.out.print("\nPreOrder: ");
         tree.printNodesPreOrder(tree);
 
         // Print Pos Order
-        System.out.print("PosOrder: ");
+        System.out.print("\nPosOrder: ");
         tree.printNodesPosOrder(tree);
 
+        System.out.print("\n\nQuestão 3)");
+
+        // Criando nova árvore (QUESTÃO 3)
+        Node treeQ3 = new Node(7);
+
+        // Inserindo nós
+        tree.insertNode(8, treeQ3);
+        tree.insertNode(4, treeQ3);
+        tree.insertNode(3, treeQ3);
+        tree.insertNode(2, treeQ3);
+        tree.insertNode(1, treeQ3);
+        tree.insertNode(6, treeQ3);
+        tree.insertNode(5, treeQ3);
+
+        // Print In Order
+        System.out.print("\nInOrder: ");
+        tree.printNodes(tree);
+
+        // Print Pre Order
+        System.out.print("\nPreOrder: ");
+        tree.printNodesPreOrder(tree);
+
+        // Print Pos Order
+        System.out.print("\nPosOrder: ");
+        tree.printNodesPosOrder(tree);
+
+        // Removendo 7 e 6
+        treeQ3.removeNode(treeQ3, 7);
+        treeQ3.removeNode(treeQ3, 6);
+        System.out.print("\nApós remoção: ");
+        tree.printNodes(tree);
+
+        // Imprimindo caminhos
+        List<Integer> currentPath = new ArrayList<>();
+        System.out.print("\n\nQuestão 5) Caminhos até as folhas: \n");
+        treeQ3.findPaths(treeQ3, currentPath);
+
+        // Imprimindo quantidade de nós em níveis ímpares
+        System.out.print("\n\nQuestão 6) \nQntd de nós em níveis ímpares: ");
+        System.out.println("" + treeQ3.countOddNodes(treeQ3));
     }
 
     //Exercício de recursividade
-    public static void testesRecursivos() {
+    public static void listaExercicioUm() {
 
         /* Árvore:
 
@@ -82,6 +129,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        testesIterativos();
+        listaExercicioDois();
     }
 }

@@ -1,5 +1,8 @@
 package arvoreBinaria;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Node {
 
     private int value;
@@ -38,26 +41,16 @@ public class Node {
         }
     }
 
-    //------------------EXERCÍCIO 2------------------//
+    //------------------LISTA 2------------------//
 
     //1 - Função não recursiva que retorna o menor valor de uma ABB
     public int findSmaller(Node no) {
-
+        if (no == null) throw new IllegalArgumentException("A árvore está vazia.");
         int smaller = no.value;
-
         while (no.left != null) {
-            while (no.right != null) {
-                no.right = no.right.right;
-                if(no.left.value < smaller){
-                    smaller = no.left.value;
-                }
-            }
-            no.left = no.left.left;
-            if(no.left.value < smaller){
-                smaller = no.left.value;
-            }
+            no = no.left;
+            smaller = no.value;
         }
-
         return smaller;
     }
 
@@ -73,13 +66,64 @@ public class Node {
 
     public void printNodesPosOrder(Node no) {
         if(no != null) {
-            System.out.print(no.value + " ");
             printNodes(no.left);
             printNodes(no.right);
+            System.out.print(no.value + " ");
         }
     }
 
-    //------------------EXERCÍCIO 1------------------//
+    //3 - Função que remove um nó
+    public Node removeNode(Node no, int value) {
+        if (no == null) return null;
+
+        if (value < no.value) {
+            no.left = removeNode(no.left, value);
+        } else if (value > no.value) {
+            no.right = removeNode(no.right, value);
+        } else {
+            // Caso 1: sem filhos ou um filho só
+            if (no.left == null) return no.right;
+            if (no.right == null) return no.left;
+
+            // Caso 2: dois filhos
+            // Substitui pelo menor valor da subárvore direita (sucessor)
+            Node temp = findMin(no.right);
+            no.value = temp.value;
+            no.right = removeNode(no.right, temp.value);
+        }
+
+        return no;
+    }
+
+    private Node findMin(Node no) {
+        while (no.left != null) {
+            no = no.left;
+        }
+        return no;
+    }
+
+    //5 - Função para imprimir os caminhos até um nó
+    public void findPaths(Node node, List<Integer> currentPath) {
+        if (node == null) return;
+
+        currentPath.add(node.value);
+
+        if (node.left == null && node.right == null) {
+            System.out.println(currentPath);
+        } else {
+            findPaths(node.left, new ArrayList<>(currentPath));
+            findPaths(node.right, new ArrayList<>(currentPath));
+        }
+    }
+
+    //6 - Função que conta o número de nós em níveis ímpares em uma ABB simples 
+    public int countOddNodes (Node no) {
+        if (no == null) return 0;
+        if (((no.value % 2) != 0)) return 1;
+        return countOddNodes(no.left) + countOddNodes(no.right);
+    }
+
+    //------------------LISTA 1------------------//
 
     //1 - Função que conta o número de nós não folhas em uma ABB simples
     public int countInternNodes(Node no) {
