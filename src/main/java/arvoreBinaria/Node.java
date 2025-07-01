@@ -55,7 +55,6 @@ public class Node {
     }
 
     //2 - Funções Pre e Pos Orders
-
     public void printNodesPreOrder(Node no) {
         if(no != null) {
             System.out.print(no.value + " ");
@@ -102,6 +101,11 @@ public class Node {
         return no;
     }
 
+    //4 - Função que calcula a altura de uma árvore, de maneira iterativa
+    public int calculateHeightIterative(Node no) {
+        return 0; //Implementar
+    }
+
     //5 - Função para imprimir os caminhos até um nó
     public void findPaths(Node node, List<Integer> currentPath) {
         if (node == null) return;
@@ -117,10 +121,27 @@ public class Node {
     }
 
     //6 - Função que conta o número de nós em níveis ímpares em uma ABB simples 
-    public int countOddNodes (Node no) {
+    public int countNodesInOddLevels(Node no, int level) {
         if (no == null) return 0;
-        if (((no.value % 2) != 0)) return 1;
-        return countOddNodes(no.left) + countOddNodes(no.right);
+        int count = countNodesInOddLevels(no.left, level + 1) + countNodesInOddLevels(no.right, level + 1);
+        if (level % 2 != 0) count++;
+        return count;
+    }
+
+    //7 - Função que conta quantidade de nós pares
+    public int countPairNodes (Node no) {
+        if (no == null) return 0;
+        int count = countPairNodes(no.left) + countPairNodes(no.right);
+        if (no.value % 2 == 0) { count++; }
+        return count;
+    }
+
+    //8 - Função que conta quantidade de nós com apenas um filho
+    public int countNodesWithOneSon (Node no) {
+        if (no == null) return 0;
+        int count = countNodesWithOneSon(no.left) + countNodesWithOneSon(no.right);
+        if ((no.left != null && no.right == null) || (no.left == null && no.right != null)) { count++; }
+        return count;
     }
 
     //------------------LISTA 1------------------//

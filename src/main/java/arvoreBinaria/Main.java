@@ -73,12 +73,20 @@ public class Main {
 
         // Imprimindo caminhos
         List<Integer> currentPath = new ArrayList<>();
-        System.out.print("\n\nQuestão 5) Caminhos até as folhas: \n");
+        System.out.print("\n\nQuestão 5)\nCaminhos até as folhas: \n");
         treeQ3.findPaths(treeQ3, currentPath);
 
         // Imprimindo quantidade de nós em níveis ímpares
-        System.out.print("\n\nQuestão 6) \nQntd de nós em níveis ímpares: ");
-        System.out.println("" + treeQ3.countOddNodes(treeQ3));
+        System.out.print("\nQuestão 6)\nQntd de nós em níveis ímpares: ");
+        System.out.println(treeQ3.countNodesInOddLevels(treeQ3, 0));
+
+        // Contando a quantidade de nós pares
+        System.out.print("\nQuestão 7)\nQntd de nós pares: ");
+        System.out.println(treeQ3.countPairNodes(treeQ3));
+
+        // Contando a quantidade de nós com um único filho
+        System.out.print("\nQuestão 8)\nQntd de nós com apenas um filho: ");
+        System.out.println(treeQ3.countNodesWithOneSon(treeQ3));
     }
 
     //Exercício de recursividade
