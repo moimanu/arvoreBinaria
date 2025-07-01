@@ -1,3 +1,6 @@
+//ATIVIDADE ATUALIZADA: 
+//Contém Listas 1 e 2
+
 package arvoreBinaria;
 
 import java.util.ArrayList;
@@ -5,7 +8,7 @@ import java.util.List;
 
 public class Main {
 
-    // Exercício de iteratividade
+    // Exercício de iteratividade - LISTA 2 (27/06/2025)
     public static void listaExercicioDois() {
 
         // Criando nova árvore
@@ -39,37 +42,39 @@ public class Main {
         System.out.print("\nPosOrder: ");
         tree.printNodesPosOrder(tree);
 
-        System.out.print("\n\nQuestão 3)");
-
         // Criando nova árvore (QUESTÃO 3)
+        System.out.print("\n\nQuestão 3)");
         Node treeQ3 = new Node(7);
 
         // Inserindo nós
-        tree.insertNode(8, treeQ3);
-        tree.insertNode(4, treeQ3);
-        tree.insertNode(3, treeQ3);
-        tree.insertNode(2, treeQ3);
-        tree.insertNode(1, treeQ3);
-        tree.insertNode(6, treeQ3);
-        tree.insertNode(5, treeQ3);
+        treeQ3.insertNode(8, treeQ3);
+        treeQ3.insertNode(4, treeQ3);
+        treeQ3.insertNode(3, treeQ3);
+        treeQ3.insertNode(2, treeQ3);
+        treeQ3.insertNode(1, treeQ3);
+        treeQ3.insertNode(6, treeQ3);
+        treeQ3.insertNode(5, treeQ3);
 
         // Print In Order
         System.out.print("\nInOrder: ");
-        tree.printNodes(tree);
+        treeQ3.printNodes(treeQ3);
 
         // Print Pre Order
         System.out.print("\nPreOrder: ");
-        tree.printNodesPreOrder(tree);
+        treeQ3.printNodesPreOrder(treeQ3);
 
         // Print Pos Order
         System.out.print("\nPosOrder: ");
-        tree.printNodesPosOrder(tree);
+        treeQ3.printNodesPosOrder(treeQ3);
 
         // Removendo 7 e 6
         treeQ3.removeNode(treeQ3, 7);
         treeQ3.removeNode(treeQ3, 6);
         System.out.print("\nApós remoção: ");
-        tree.printNodes(tree);
+        treeQ3.printNodes(treeQ3);
+
+        // Calculando altura (QUESTÃO 4)
+        System.out.print("\n\nQuestão 4)\nCalculando altura (após remoção): " + treeQ3.calculateHeightIterative(treeQ3));
 
         // Imprimindo caminhos
         List<Integer> currentPath = new ArrayList<>();
@@ -89,7 +94,7 @@ public class Main {
         System.out.println(treeQ3.countNodesWithOneSon(treeQ3));
     }
 
-    //Exercício de recursividade
+    //Exercício de recursividade - LISTA 1 (12/06/2025)
     public static void listaExercicioUm() {
 
         /* Árvore:

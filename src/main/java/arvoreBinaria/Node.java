@@ -1,7 +1,9 @@
 package arvoreBinaria;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Node {
 
@@ -41,7 +43,7 @@ public class Node {
         }
     }
 
-    //------------------LISTA 2------------------//
+    //------------------LISTA 2 (27/06/2025)------------------//
 
     //1 - Função não recursiva que retorna o menor valor de uma ABB
     public int findSmaller(Node no) {
@@ -103,7 +105,23 @@ public class Node {
 
     //4 - Função que calcula a altura de uma árvore, de maneira iterativa
     public int calculateHeightIterative(Node no) {
-        return 0; //Implementar
+        if (no == null) { return -1; }
+        Queue<Node> fila = new LinkedList<>();
+        fila.add(no);
+        int altura = 0;
+
+        while (!fila.isEmpty()) {
+            int tamanhoNivelAtual = fila.size();
+
+            for (int i = 0; i < tamanhoNivelAtual; i++) {
+                Node noAtual = fila.poll(); 
+                if (noAtual.left != null) { fila.add(noAtual.left); }
+                if (noAtual.right != null) { fila.add(noAtual.right); }
+            }
+            if (!fila.isEmpty()) { altura++; }
+        }
+
+        return altura;
     }
 
     //5 - Função para imprimir os caminhos até um nó
@@ -144,7 +162,7 @@ public class Node {
         return count;
     }
 
-    //------------------LISTA 1------------------//
+    //------------------LISTA 1 (12/06/2025)------------------//
 
     //1 - Função que conta o número de nós não folhas em uma ABB simples
     public int countInternNodes(Node no) {
